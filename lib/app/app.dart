@@ -1,6 +1,6 @@
 import 'package:contact_manager/core/cubit/view_user_cubit/view_user_cubit.dart';
 import 'package:contact_manager/core/theme/app_theme.dart';
-import 'package:contact_manager/screens/contact_manager_home.dart';
+import 'package:contact_manager/screens/contact_user_manager_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

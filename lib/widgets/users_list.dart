@@ -2,17 +2,12 @@
 import 'package:contact_manager/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 
-import 'contact_card.dart';
+import 'user_card.dart';
 
-class ContactList extends StatefulWidget {
+class ContactList extends StatelessWidget {
   const ContactList({super.key, required this.list});
   final List<UserModel> list;
 
-  @override
-  State<ContactList> createState() => _ContactListState();
-}
-
-class _ContactListState extends State<ContactList> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -24,18 +19,18 @@ class _ContactListState extends State<ContactList> {
                   crossAxisCount: 2,
                   childAspectRatio: 3,
                 ),
-                itemCount: widget.list.length, // Use actual contact count
+                itemCount: list.length, // Use actual contact count
                 itemBuilder: (context, index) {
                   return ContactCard(
-                    user: widget.list[index], // Pass a single user
+                    user: list[index], // Pass a single user
                   );
                 },
               )
             : ListView.builder(
-                itemCount: widget.list.length, // Use actual contact count
+                itemCount: list.length, // Use actual contact count
                 itemBuilder: (context, index) {
                   return ContactCard(
-                    user: widget.list[index], // Pass a single user
+                    user: list[index], // Pass a single user
                   );
                 },
               );

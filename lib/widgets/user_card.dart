@@ -1,8 +1,12 @@
 // widgets/contact_card.dart
+import 'dart:developer';
+
+import 'package:contact_manager/core/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class ContactCard extends StatelessWidget {
-  const ContactCard({super.key});
+  const ContactCard({super.key, required this.user});
+  final UserModel user; // Change from list to single user
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +22,12 @@ class ContactCard extends StatelessWidget {
             style: TextStyle(color: Theme.of(context).primaryColor),
           ),
         ),
-        title: const Text('John Doe'), // Replace with actual name
-        subtitle:
-            const Text('123 Main St, Anytown'), // Replace with actual address
+        title: Text(user.name),
+        subtitle: Text(user.address), // Replace with actual address
         trailing: IconButton(
           icon: Icon(Icons.phone, color: Theme.of(context).primaryColor),
           onPressed: () {
-            // TODO: Implement call functionality
+            log('Calling ${user.name}');
           },
         ),
       ),
