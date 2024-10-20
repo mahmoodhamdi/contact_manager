@@ -25,7 +25,6 @@ class ContactCard extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
-            color: Colors.white,
             fontSize: 20,
           ),
         ),

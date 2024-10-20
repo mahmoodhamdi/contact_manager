@@ -25,6 +25,13 @@ class CustomTextField extends StatelessWidget {
         if (value?.isEmpty ?? true) {
           return 'Field is required';
         }
+        if (labelText == 'Phone') {
+          final phoneRegex = RegExp(r'^(011|012|010|015)\d{8}$');
+          if (!phoneRegex.hasMatch(value!)) {
+            return 'Starting with 010, 011, 012, or 015\nEnter a valid 11-digit';
+          }
+        }
+
         return null;
       },
       onSaved: onSaved,
@@ -33,25 +40,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         hintText: labelText,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.white),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.orange),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Color.fromARGB(255, 255, 27, 27),
-          ),
-        ),
+        border: const OutlineInputBorder(),
       ),
     );
   }

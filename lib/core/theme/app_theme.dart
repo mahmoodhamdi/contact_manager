@@ -7,14 +7,14 @@ class AppTheme {
   static const Color _accentColorLight = Color(0xFFF39C12); // Orange
   static const Color _backgroundColorLight = Color(0xFFF5F5F5); // Light Gray
   static const Color _textColorLight = Color(0xFF2C3E50); // Dark Blue-Gray
-  static const Color _errorColorLight = Color(0xFFE74C3C); // Soft Red
-
+  static const Color _errorColorLight = Color.fromARGB(255, 255, 0, 0);
   // Dark theme colors
   static const Color _primaryColorDark = Color(0xFF2980B9); // Darker Blue
   static const Color _accentColorDark = Color(0xFFD35400); // Darker Orange
   static const Color _backgroundColorDark = Color(0xFF1A1A1A); // Very Dark Gray
   static const Color _textColorDark = Color(0xFFECF0F1); // Off-White
-  static const Color _errorColorDark = Color(0xFFC0392B); // Darker Red
+  static const Color _errorColorDark =
+      Color.fromARGB(255, 255, 12, 12); // Darker Red
 
   static ThemeData lightTheme = _createTheme(
     primaryColor: _primaryColorLight,
@@ -49,7 +49,7 @@ class AppTheme {
         secondary: accentColor,
         surface: backgroundColor,
         error: errorColor,
-        onPrimary: brightness == Brightness.light ? Colors.white : Colors.black,
+        onPrimary: brightness == Brightness.dark ? Colors.white : Colors.black,
         onSecondary:
             brightness == Brightness.light ? Colors.black : Colors.white,
         onSurface: textColor,
@@ -66,24 +66,32 @@ class AppTheme {
         color: primaryColor,
         elevation: 0,
         iconTheme: IconThemeData(
-            color:
-                brightness == Brightness.light ? Colors.white : Colors.black),
+            color: brightness == Brightness.dark ? Colors.white : Colors.black),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: accentColor,
         foregroundColor:
-            brightness == Brightness.light ? Colors.white : Colors.black,
+            brightness == Brightness.dark ? Colors.white : Colors.black,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: primaryColor),
-        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: accentColor, width: 2),
         ),
         labelStyle: TextStyle(color: textColor.withOpacity(0.8)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: textColor.withOpacity(0.5)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: errorColor),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: errorColor, width: 2),
+        ),
+        errorStyle: TextStyle(color: errorColor),
       ),
       cardTheme: CardTheme(
         color: brightness == Brightness.light
@@ -95,7 +103,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor:
-              brightness == Brightness.light ? Colors.white : Colors.black,
+              brightness == Brightness.dark ? Colors.white : Colors.black,
           backgroundColor: accentColor,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),

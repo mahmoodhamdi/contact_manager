@@ -16,11 +16,6 @@ class ContactManagerHome extends StatefulWidget {
 
 class _ContactManagerHomeState extends State<ContactManagerHome> {
   @override
-  // void initState() {
-  //   var usersBlocProvider = context.read<ViewUserCubit>().getUser();
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
