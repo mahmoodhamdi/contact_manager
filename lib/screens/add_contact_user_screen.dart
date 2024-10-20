@@ -41,12 +41,20 @@ class AddContactScreen extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            if (state is AddUserSuccess) {
-              return const AddUserSuccessWidget();
-            } else if (state is AddUserError) {
-              return Center(child: Text(state.message));
-            }
-            return const Center(child: CircularProgressIndicator());
+            return AbsorbPointer(
+              absorbing: state is AddUserLoading ? true : false,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 16,
+                  left: 16,
+                  right: 16,
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: const SingleChildScrollView(
+                  child: AddUserSuccessWidget(),
+                ),
+              ),
+            );
           },
         ),
       ),
