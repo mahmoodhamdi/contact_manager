@@ -27,7 +27,7 @@ class _AddUserSuccessWidgetState extends State<AddUserSuccessWidget> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Form(
           key: formKey,
-          autovalidateMode: AutovalidateMode.disabled,
+          autovalidateMode: autovalidateMode,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -37,13 +37,12 @@ class _AddUserSuccessWidgetState extends State<AddUserSuccessWidget> {
                   title = value;
                 },
                 maxLines: 1,
-                maxLength: 30,
                 keyboardType: TextInputType.name,
               ),
               const SizedBox(height: 16),
               CustomTextField(
                 labelText: 'Address',
-                maxLines: 5,
+                maxLines: 4,
                 maxLength: 200,
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
@@ -68,9 +67,16 @@ class _AddUserSuccessWidgetState extends State<AddUserSuccessWidget> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.secondary,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
-                child: const Text('Save Contact'),
+                child: const Text(
+                  'Save Contact',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ],
           ),
@@ -88,9 +94,11 @@ class _AddUserSuccessWidgetState extends State<AddUserSuccessWidget> {
         phone: phone!,
       );
       BlocProvider.of<AddUserCubit>(context).addUser(userModel);
+      Navigator.pop(context);
     } else {
-      autovalidateMode = AutovalidateMode.always;
-      setState(() {});
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
     }
   }
 }

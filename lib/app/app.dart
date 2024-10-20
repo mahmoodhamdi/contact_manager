@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider<ViewUserCubit>(
       create: (context) => ViewUserCubit()..getUser(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Contact Manager',
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,

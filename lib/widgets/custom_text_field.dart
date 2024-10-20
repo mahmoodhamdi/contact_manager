@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String labelText;
   final TextInputType keyboardType;
-  final int maxLines, maxLength;
+  final int? maxLines, maxLength;
   final void Function(String?)? onSaved, onChanged;
 
   const CustomTextField({
@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
     required this.maxLines,
     this.onSaved,
     this.onChanged,
-    required this.maxLength,
+    this.maxLength,
     required this.labelText,
     required this.keyboardType,
   });
@@ -45,6 +45,12 @@ class CustomTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: Colors.orange),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Color.fromARGB(255, 255, 27, 27),
+          ),
         ),
       ),
     );
